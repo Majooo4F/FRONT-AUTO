@@ -60,6 +60,9 @@ import Ayuda from './pages/Ayuda/Ayuda';
 import Servicios from './pages/Servicios/Servicios';
 import MarketingDashboard from './pages/dashboard/MarketingDashboard';
 
+import RegistrarUsuario from './pages/dashboard/RegistrarUsuario/RegistrarUsuario';
+import Dashboard from './pages/dashboard/Dashboard';
+
 function App() {
 
   return (
@@ -91,6 +94,8 @@ function App() {
             <Route path="/admin" element={<LayoutAdmin />}>
               <Route index element={<Home />} />
               <Route path="home" element={<Home />} />
+              <Route path="registrar-usuario" element={<RegistrarUsuario />} />
+              <Route path="dashboard" element={<Dashboard />} />
               <Route path="marketing" element={<MarketingDashboard />} />
                 <Route path="crud-servicios" element={<Crud_Servicios />} />
                 <Route path="citas-servicios" element={<Citas_Servicios />} />
