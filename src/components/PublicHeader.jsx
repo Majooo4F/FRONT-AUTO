@@ -1,12 +1,35 @@
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from '../assets/images/logo.jpg';
-import { marcas } from '../data/vehiculos';
+import { getMarcas } from '../api/vehiculosApi';
 import './PublicHeader.css';
 
 export default function PublicHeader() {
   const location = useLocation();
+  const [marcas, setMarcas] = useState([]);
 
   const isActive = (path) => location.pathname === path ? 'active fw-bold text-accent' : '';
+
+  useEffect(() => {
+    let activo = true;
+
+    getMarcas()
+      .then((data) => {
+        if (!activo) return;
+        const marcasFormateadas = data.map((m) => ({
+          key: m.id,
+          nombre: m.nombre,
+        }));
+        setMarcas(marcasFormateadas);
+      })
+      .catch((err) => {
+        console.error('No se pudieron cargar las marcas del menú:', err);
+      });
+
+    return () => {
+      activo = false;
+    };
+  }, []);
 
   return (
     <>

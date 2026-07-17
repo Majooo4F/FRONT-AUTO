@@ -1,36 +1,3 @@
-// import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// // Rutas para pages
-// import Index from './pages/Index';
-// import NotFound from './pages/error/Not_Found';
-// // Rutas para Dashboard
-// import Home from './pages/dashboard/Home';
-// // Rutas para Auth
-// import Register from './pages/auth/Register';
-// // Rutas para Layout
-// import LayoutAdmin from './components/Dashboard/LayoutAdmin';
-// import PublicLayout from './components/PublicLayout';
-
-// function App() {
-
-//   return (
-//     <BrowserRouter>
-//       <Routes>
-//         <Route element={<PublicLayout />}>
-//           <Route path="/" element={<Index />} />
-//           <Route path="/register" element={<Register />} />
-//         </Route>
-
-//         <Route path="/admin" element={<LayoutAdmin />}>
-//           <Route index element={<Home />} />
-//           <Route path="home" element={<Home />} />
-//         </Route>
-//         <Route path="*" element={<NotFound />} />
-//       </Routes>
-//     </BrowserRouter>
-//   );
-// }
-
-// export default App;
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // Rutas para pages
 import Index from './pages/Index';
@@ -60,6 +27,8 @@ import Marcas from './pages/Marcas/Marcas';
 import MarcaDetalle from './pages/MarcaDetalle/MarcaDetalle';
 import PreguntasFrecuentes from './pages/PreguntasFrecuentes/PreguntasFrecuentes';
 import Ayuda from './pages/Ayuda/Ayuda';
+import Vehiculos from './pages/dashboard/Vehiculos';
+import VehiculoDetalle from './pages/VehiculoDetalle/VehiculoDetalle';
 import Servicios from './pages/Servicios/Servicios';
 import MarketingDashboard from './pages/dashboard/MarketingDashboard';
 
@@ -84,6 +53,7 @@ function App() {
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/preguntas-frecuentes" element={<PreguntasFrecuentes />} />
             <Route path="/ayuda" element={<Ayuda />} />
+            <Route path="/vehiculos/:id" element={<VehiculoDetalle />} />
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/servicios-contacto" element={<ServiciosContacto />} />
           </Route>
@@ -92,6 +62,7 @@ function App() {
             <Route path="/admin" element={<LayoutAdmin />}>
               <Route index element={<Home />} />
               <Route path="home" element={<Home />} />
+              <Route path="vehiculos" element={<Vehiculos />} />
               <Route path="registrar-usuario" element={<RegistrarUsuario />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="marketing" element={<MarketingDashboard />} />

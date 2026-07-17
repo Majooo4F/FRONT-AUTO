@@ -1,26 +1,30 @@
-import './CategoryTabs.css';
+import "./CategoryTabs.css";
+
+const ICONOS = {
+  suv: "bi-truck",
+  sedan: "bi-car-front",
+  pickup: "bi-truck-flatbed",
+  hatchback: "bi-car-front-fill",
+  deportivo: "bi-lightning-charge",
+};
+
+function obtenerIcono(nombre) {
+  const clave = (nombre || "").toLowerCase();
+  return ICONOS[clave] || "bi-car-front";
+}
 
 export default function CategoryTabs({ categorias, categoriaActiva, onChange }) {
   return (
     <div className="d-flex justify-content-center gap-3 flex-wrap">
-      <button
-        onClick={() => onChange('todos')}
-        className={`btn btn-lg fw-semibold d-flex align-items-center gap-2 category-tab ${
-          categoriaActiva === 'todos' ? 'btn-dark active' : 'btn-outline-dark'
-        }`}
-      >
-        <i className="bi bi-grid-fill"></i>
-        Todos
-      </button>
       {categorias.map((cat) => (
         <button
           key={cat.id}
-          onClick={() => onChange(cat.nombre)}
+          onClick={() => onChange(cat.id)}
           className={`btn btn-lg fw-semibold d-flex align-items-center gap-2 category-tab ${
-            categoriaActiva.toLowerCase() === cat.nombre.toLowerCase() ? 'btn-dark active' : 'btn-outline-dark'
+            categoriaActiva === cat.id ? "btn-dark active" : "btn-outline-dark"
           }`}
         >
-          <i className="bi bi-car-front-fill"></i>
+          <i className={`bi ${obtenerIcono(cat.nombre)}`}></i>
           {cat.nombre}
         </button>
       ))}

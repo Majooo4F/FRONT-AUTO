@@ -1,4 +1,4 @@
-import VehicleCard from './VehicleCard';
+import VehicleCard from "./VehicleCard";
 
 export default function VehicleGrid({ vehiculos }) {
   return (
