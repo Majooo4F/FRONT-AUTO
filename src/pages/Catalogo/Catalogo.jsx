@@ -5,7 +5,15 @@ import SearchBar from '../../components/shared/SearchBar';
 import './Catalogo.css';
 
 export default function Catalogo() {
-  const { categoriaActiva, setCategoriaActiva, busqueda, setBusqueda, vehiculosActivos } = useCatalogo();
+  const {
+    categorias,
+    categoriaActiva,
+    setCategoriaActiva,
+    busqueda,
+    setBusqueda,
+    vehiculosActivos,
+    cargando,
+  } = useCatalogo();
 
   return (
     <div className="catalogo-page bg-white text-dark">
@@ -21,14 +29,16 @@ export default function Catalogo() {
 
       <section className="py-4 bg-light border-bottom border-light sticky-top" style={{ zIndex: 10 }}>
         <div className="container d-flex flex-column gap-3">
-          <CategoryTabs categoriaActiva={categoriaActiva} onChange={setCategoriaActiva} />
-          <SearchBar value={busqueda} onChange={setBusqueda} placeholder="Buscar por nombre..." />
+          <CategoryTabs categorias={categorias} categoriaActiva={categoriaActiva} onChange={setCategoriaActiva} />
+          <SearchBar value={busqueda} onChange={setBusqueda} placeholder="Buscar por marca o modelo..." />
         </div>
       </section>
 
       <section className="py-5">
         <div className="container">
-          {vehiculosActivos.length > 0 ? (
+          {cargando ? (
+            <p className="text-center text-secondary py-5">Cargando catálogo de vehículos...</p>
+          ) : vehiculosActivos.length > 0 ? (
             <VehicleGrid vehiculos={vehiculosActivos} />
           ) : (
             <p className="text-center text-secondary py-5">

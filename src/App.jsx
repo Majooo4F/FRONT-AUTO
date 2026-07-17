@@ -41,6 +41,8 @@ import Contacto_Dash from './pages/dashboard/Contacto-Dash';
 import Crud_Servicios from './pages/dashboard/Crud_Servicios';
 import ServiciosContacto from './pages/Contacto/ServiciosContacto';
 import Citas_Servicios from './pages/dashboard/Citas_Servicios';
+import Cotizaciones_Vehiculos from './pages/dashboard/Cotizaciones_Vehiculos';
+
 // Rutas para Auth
 import Login from './pages/auth/Login/Login';
 import Register from './pages/auth/Register/Register';
@@ -52,6 +54,7 @@ import PublicLayout from './components/PublicLayout';
 import { AuthProvider } from './auth/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Catalogo from './pages/Catalogo/Catalogo';
+import CotizarVehiculo from './pages/Catalogo/CotizarVehiculo';
 import Contacto from './pages/Contacto/Contacto';
 import Marcas from './pages/Marcas/Marcas';
 import MarcaDetalle from './pages/MarcaDetalle/MarcaDetalle';
@@ -75,6 +78,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/callback" element={<Callback />} />
             <Route path="/catalogo" element={<Catalogo />} />
+            <Route path="/catalogo/cotizar" element={<CotizarVehiculo />} />
             <Route path="/marcas" element={<Marcas />} />
             <Route path="/marcas/:marcaKey" element={<MarcaDetalle />} />
             <Route path="/contacto" element={<Contacto />} />
@@ -84,12 +88,6 @@ function App() {
             <Route path="/servicios-contacto" element={<ServiciosContacto />} />
           </Route>
 
-          {/*<Route path="/admin" element={<LayoutAdmin />}>
-            <Route index element={<Home />} />
-            <Route path="home" element={<Home />} />
-            <Route path="marketing" element={<MarketingDashboard />} />
-          </Route>*/}
-          
           <Route element={<ProtectedRoute requireAdmin />}>
             <Route path="/admin" element={<LayoutAdmin />}>
               <Route index element={<Home />} />
@@ -97,9 +95,10 @@ function App() {
               <Route path="registrar-usuario" element={<RegistrarUsuario />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="marketing" element={<MarketingDashboard />} />
-                <Route path="crud-servicios" element={<Crud_Servicios />} />
-                <Route path="citas-servicios" element={<Citas_Servicios />} />
-                <Route path="contacto" element={<Contacto_Dash />} />
+              <Route path="crud-servicios" element={<Crud_Servicios />} />
+              <Route path="citas-servicios" element={<Citas_Servicios />} />
+              <Route path="cotizaciones" element={<Cotizaciones_Vehiculos />} />
+              <Route path="contacto" element={<Contacto_Dash />} />
             </Route>
           </Route>
 
